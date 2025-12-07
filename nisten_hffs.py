@@ -106,7 +106,7 @@ class NistenHFFS:
             print("   ✓ Python packages installed")
         
         # Check auth
-        from huggingface_hub import HfFolder
+        from huggingface_hub import get_token
         token = HfFolder.get_token()
         if not token:
             print("\n❌ Not logged in to HuggingFace")
