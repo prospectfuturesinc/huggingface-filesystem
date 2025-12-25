@@ -92,7 +92,7 @@ class NistenHFFS:
         
         # Check Python packages
         try:
-            from huggingface_hub import HfFileSystem, HfFolder, CommitScheduler
+            from huggingface_hub import HfFileSystem, CommitScheduler
             from fsspec.fuse import run
             print("   ✓ Python packages")
         except ImportError:
@@ -101,13 +101,13 @@ class NistenHFFS:
                 sys.executable, "-m", "pip", "install", "-q",
                 "huggingface_hub[hf_transfer]", "fsspec[fuse]"
             ])
-            from huggingface_hub import HfFileSystem, HfFolder, CommitScheduler
+            from huggingface_hub import HfFileSystem, CommitScheduler
             from fsspec.fuse import run
             print("   ✓ Python packages installed")
         
         # Check auth
         from huggingface_hub import get_token
-        token = HfFolder.get_token()
+        token = get_token()
         if not token:
             print("\n❌ Not logged in to HuggingFace")
             print("\nPlease run:")
